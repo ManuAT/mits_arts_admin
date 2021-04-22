@@ -39,8 +39,12 @@ export class CommonService {
   getScore(){
     return this.http.get('https://mitsarts2021.herokuapp.com/api/score')
   }
-  updateScore(red,green,blue,yellow){
-       return this.http.post('https://mitsarts2021.herokuapp.com/api/score',{red,green,blue,yellow})
+  updateScore(score){
+      var red=score.red
+      var green = score.green;
+      var blue = score.blue;
+      var yellow = score.yellow;
+       return this.http.put('https://mitsarts2021.herokuapp.com/api/score',{red,green,blue,yellow})
   }
   getEvent(){
     return this.http.get('https://mitsarts2021.herokuapp.com/api/event')
@@ -49,7 +53,10 @@ export class CommonService {
     return this.http.post('https://mitsarts2021.herokuapp.com/api/event',{eventName,eventCategory,eventTime,eventWinner})
   }
   updateEvent(_id,eventName,eventCategory,eventTime,eventWinner){
-    return this.http.post('https://mitsarts2021.herokuapp.com/api/event',{_id,eventName,eventCategory,eventTime,eventWinner})
+    return this.http.put('https://mitsarts2021.herokuapp.com/api/event',{_id,eventName,eventCategory,eventTime,eventWinner})
 
+  }
+  deleteEvent(_id){
+    return this.http.delete('https://mitsarts2021.herokuapp.com/api/event',{params:{_id}})
   }
 }

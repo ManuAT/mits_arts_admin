@@ -21,7 +21,94 @@
 <!--  <router-outlet></router-outlet> -->
 
 <!-- hello -->
+<h3>Team Score</h3> <button class="btn btn-primary" (click)="enableUpdateScore=true"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+<button class="btn btn-primary" *ngIf="enableUpdateScore" (click)="scoreUpdate()">Update_button</button>
 
-{{getScore}}
+<p *ngIf="!enableUpdateScore">red : {{getScore.red}} green : {{getScore.green}}  blue : {{getScore.blue}} yellow : {{getScore.yellow}}</p>
+<div *ngIf="enableUpdateScore">
+<input type="Number" class="form-control" [(ngModel)]="getScore.red">
+<input type="Number" class="form-control" [(ngModel)]="getScore.green">
+<input type="Number" class="form-control" [(ngModel)]="getScore.blue">
+<input type="Number" class="form-control" [(ngModel)]="getScore.yellow">
+ 
+</div> 
+<br>
 
-{{getEvent}}
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal">
+  Add_Event
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Event Name</label>
+            <input type="text" [(ngModel)]="eventName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Event Category</label>
+            <input type="text" [(ngModel)]="eventCategory" class="form-control" id="exampleInputPassword1" placeholder="Password" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword2">Event Time</label>
+            <input type="text" [(ngModel)]="eventTime" class="form-control" id="exampleInputPassword2" placeholder="Password" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword3">Event Winner</label>
+            <input type="text" [(ngModel)]="eventWinner" class="form-control" id="exampleInputPassword3" placeholder="Password" [ngModelOptions]="{standalone: true}">
+          </div>
+         
+          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addEventFuntion(eventName,eventCategory,eventTime,eventWinner)" data-dismiss="modal">Add Event</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- {{getEvent}} -->
+
+
+<div class="table" style="border: solid grey 16px;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">eventName</th>
+        <th scope="col">eventCategory</th>
+        <th scope="col">eventTime</th>
+        <th scope="col">eventWinner</th>
+  
+        <!-- <th scope="col">ShopName</th> -->
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of getEvent; let i = index">
+        <td>{{item.eventName}}</td>
+        <td>{{item.eventCategory}}</td>
+        <td>{{item.eventTime }}</td>
+        <td>{{item.eventWinner}}</td>
+        <!-- <td>{{item.shopName}}</td> -->
+        <td><button  ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+        <td><button (click)="deleteEvent(item._id)"><i class="fa fa-close" aria-hidden="true"></i></button></td>
+  
+      </tr>
+      
+    </tbody>
+  </table>  
+  </div>
