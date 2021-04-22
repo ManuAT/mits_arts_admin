@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   constructor(
     public common : CommonService,
@@ -15,8 +16,21 @@ export class AppComponent {
 
   }
   title = 'foodapp';
+  geScore :any;
+  getEvent:any;
   ngOnInit(){
+
     // this.router.navigate(['login']);
+    this.common.getScore().subscribe(result=>{
+      this.geScore = result[0];
+      console.log("Score",this.geScore);
+
+    });
+
+    this.common.getEvent().subscribe(result=>{
+      console.log("Evnet",result);
+      this.getEvent = result;
+    })
 
   }
 }
