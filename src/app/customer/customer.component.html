@@ -1,0 +1,86 @@
+<div class="page-header" style="margin-top: 8%;
+margin-left: 8%;
+margin-right: 8%;
+">
+<form class="example">
+  <input  list="Bro" type="text"  placeholder="Search......" [(ngModel)]="search" name="search">
+  <button type="submit" (click)="listFn()"><i class="fa fa-search"></i></button>
+  <datalist id="Bro" >
+    <div *ngFor="let item of stock; let i = index">    
+      <option value="{{item.itemName}}"></option> </div>
+  </datalist>
+</form>
+</div>
+<div class="page-body">
+  <div class="container" style="margin-top: 8vh;"> 
+  <div class="row">
+    <div class="col-sm-6" style="min-height: 400px;
+    border: solid;">
+    <div id="myMap" style="height:100%;width: 100%;"></div>
+  </div>
+    <div class="col-sm-6" style="min-height: 400px;
+    border: solid;">
+    <h3>Avilable Stock</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ItemName</th>
+        <th scope="col">Cost</th>
+        <th scope="col">Quntity</th>
+        <th scope="col">ShopName</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of list; let i = index">
+        <td>{{item.itemName}}</td>
+        <td>{{item.cost}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.shopName}}</td>
+        <td><button (click)="cartFn(item)"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button></td>
+      </tr>
+      
+    </tbody>
+  </table>  
+  
+  
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12" style="min-height: 400px;
+    border: solid;">
+     <h3>Cart</h3>
+     <button style="float: right;
+     width: 56px;
+     height: 46px;
+     color: white;
+     background: green;" (click)="buyFn()"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+   <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ItemName</th>
+        <th scope="col">ShopName</th>
+        <th scope="col">Cost</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cart; let i = index">
+        <td>{{item.itemName}}</td>
+        <td>{{item.shopName}}</td>
+        <td>{{item.cost}}</td>
+        <td><button (click)="removeFn(i,item.cost)"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+      </tr>
+      
+    </tbody>
+  </table>  
+    <h3 style="float: right;">Total Sum  &nbsp; &nbsp; {{sum}}</h3><br>
+  </div>
+    
+  </div>
+</div>
+</div>
+<div class="footer" style="margin: 10vh;">
+Under Development...
+</div>
+

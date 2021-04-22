@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <!-- <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+  <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+  <title>Sign in</title>
+</head>
+
+<body>
+  <div *ngIf="sign">
+  <div class="main">
+    
+    <p class="sign" align="center">Sign in</p>
+    <form class="form1">
+      <input class="un " type="number" align="center" name="Username" placeholder="Phone Number" [(ngModel)]="phone">
+      <input class="pass" type="password" align="center" name="Password" placeholder="Password" [(ngModel)]="password">
+      <a class="submit" align="center" (click)="sub()">Sign in</a> 
+    <p class="forgot" align="center"><a (click)="signup()" >Sign Up</a>
+    </form> 
+  </div>          
+</div>
+
+
+  <div *ngIf="!sign">
+    <div class="main1">
+      <p class="sign" align="center">Please Enter the Details</p>
+      <form class="form1">
+        <input class="un " type="number" align="center" name="Username" placeholder="Phone Number" [(ngModel)]="phone">
+        <input class="pass" type="password" align="center" name="Password" placeholder="Password" [(ngModel)]="password">
+        <!-- <input class="pass" type="" align="center" name="Department" placeholder="Password" [(ngModel)]="password"> -->
+        <select [(ngModel)]='department' class='un ' name="list">
+            <option class="un " value='0'>Customer</option>
+            <option class="un " value='1'>Shop</option>
+            <option class="un " value='2'>Delivery</option>
+            <!-- <option class="un " value='1'>Experts</option>
+            <option class="un " value='2'>Donar</option> -->
+          </select>
+          <div  >
+            <input class="un " type="text" align="center" name="Username" placeholder="Name" [(ngModel)]="username">
+            <input class="un" type="email" align="center" name="Password" placeholder="Email" [(ngModel)]="email">
+            <input class="un" type="text" align="center" name="Password" placeholder="Address" [(ngModel)]="address">
+            <input class="un" type="number" align="center" name="Password" placeholder="Secondary Phone Number" [(ngModel)]="sphone">
+            <!-- <input class="pass" type="password" align="center" name="Password" placeholder="Address" [(ngModel)]="password"> -->
+
+          </div>
+        <a class="submit" align="center" (click)="signup2()">Sign Up</a> 
+      <!-- <a class="forgot" align="center"><a (click)="signup()" >Sign Up</a></p> -->
+      </form> 
+    </div>
+   
+  </div>
+</body>
+
+</html>
