@@ -11,11 +11,12 @@ export class AppComponent {
   constructor(
     public common : CommonService,
     private router : Router,
-  ) { 
-    
+  ) {
+
   }
   title = 'foodapp';
   ngOnInit(){
-    this.router.navigate(['login']);
+    // this.router.navigate(['login']);
+
   }
 }

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   details : string="";
   location : string ="";
   lat : Number = 0
-  log : Number = 0 
+  log : Number = 0
 
   constructor(
     public common : CommonService,
@@ -29,15 +29,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     // taking Location
-    navigator.geolocation.getCurrentPosition((position) => { 
-      console.log("Got position", position.coords);
-      this.location = position.coords.latitude +"&"+ position.coords.longitude;
-      this.lat = position.coords.latitude;
-      this.log = position.coords.longitude
-      console.log("Got location", this.location);
-    });
+    // navigator.geolocation.getCurrentPosition((position) => {
+    //   console.log("Got position", position.coords);
+    //   this.location = position.coords.latitude +"&"+ position.coords.longitude;
+    //   this.lat = position.coords.latitude;
+    //   this.log = position.coords.longitude
+    //   console.log("Got location", this.location);
+    // });
     // end of taking location
-    
+
 
 
   }
@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit {
       else if(this.department == 2){
         this.router.navigate(['delevery'],{ queryParams: { phone: this.phone} });
       }
-      
+
     });
   }
   createBasicMessage(): void {
