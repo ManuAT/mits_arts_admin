@@ -27,6 +27,12 @@ export class AppComponent {
   eventCategory:string="";
   eventTime:string="";
   eventWinner:string="";
+  updateData:any={
+    "eventName":"",
+    "eventCategory":"",
+    "eventTime":"",
+    "eventWinner":""
+  };
   ngOnInit(){
 
     // this.router.navigate(['login']);
@@ -75,6 +81,15 @@ export class AppComponent {
       this.getEventFuntion();
       
     })
+  }
+
+  updateEventFuntion(updateData){
+
+    this.common.updateEvent(updateData._id,updateData.eventName,updateData.eventCategory,updateData.eventTime,updateData.eventWinner).subscribe(result=>{
+      console.log("Event_updated",result);
+      this.getEventFuntion();
+    })
+    
   }
   
 }
