@@ -21,23 +21,52 @@
 <!--  <router-outlet></router-outlet> -->
 
 <!-- hello -->
-<h3>Team Score</h3> <button class="btn btn-primary" (click)="enableUpdateScore=true"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-<button class="btn btn-primary" *ngIf="enableUpdateScore" (click)="scoreUpdate()">Update_button</button>
+<h3 style="margin-left:10px">Score Panel</h3> 
+<br>
+<button class="btn btn-primary" (click)="enableUpdateScore=true" style="margin-left:10px"> Edit Score <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></button>
+<br>
+<br>
 
-<p *ngIf="!enableUpdateScore">red : {{getScore.red}} green : {{getScore.green}}  blue : {{getScore.blue}} yellow : {{getScore.yellow}}</p>
-<div *ngIf="enableUpdateScore">
-<input type="Number" class="form-control" [(ngModel)]="getScore.red">
-<input type="Number" class="form-control" [(ngModel)]="getScore.green">
-<input type="Number" class="form-control" [(ngModel)]="getScore.blue">
-<input type="Number" class="form-control" [(ngModel)]="getScore.yellow">
+
+<p style="margin-left:10px" *ngIf="!enableUpdateScore">Team Red : <b>{{getScore.red}}</b> Team Green : <b>{{getScore.green}}</b>  Team Blue : <b>{{getScore.blue}}</b> Team Yellow : <b>{{getScore.yellow}}</b></p>
+
+
+<div  style="margin-left:10px" *ngIf="enableUpdateScore">
+
+  <form>
+    <div  class="row">
+      <div class="col">
+        <label for="red">Team Red</label>
+        <input type="Number" id="red" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="getScore.red">
+      </div>
+      <div class="col">
+        <label for="red">Team Green</label>
+        <input type="Number" id="green" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="getScore.green">
+      </div>
+      <div class="col">
+        <label for="red">Team Blue</label>
+        <input type="Number" id="blue" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="getScore.blue">
+      </div>
+      <div class="col">
+        <label for="red">Team yellow</label>
+        <input type="Number" id="yellow" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="getScore.yellow">  
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-warning" style="margin-top: 30px;" *ngIf="enableUpdateScore" (click)="scoreUpdate()">Update Score</button>
+      </div>
+    </div>
+  </form>
  
 </div> 
 <br>
 
+<br>
+<br>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal">
-  Add_Event
+<h3 style="position: absolute;margin-left: 1%;">Event Panel</h3>
+<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal" style="float: right;margin-right: 1%; margin-bottom: 1%;">
+  Add New Event
 </button>
 
 <!-- Modal for New event -->
@@ -124,7 +153,7 @@
 <!-- {{getEvent}} -->
 
 
-<div class="table" style="border: solid grey 16px;">
+<div class="table">
   <table class="table">
     <thead>
       <tr>
@@ -145,8 +174,8 @@
         <td>{{item.eventTime }}</td>
         <td>{{item.eventWinner}}</td>
         <!-- <td>{{item.shopName}}</td> -->
-        <td><button  (click)="updateData=item" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
-        <td><button (click)="deleteEvent(item._id)"><i class="fa fa-close" aria-hidden="true"></i></button></td>
+        <td><button type="button" (click)="updateData=item" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+        <td><button type="button" (click)="deleteEvent(item._id)" class="btn btn-danger"><i class="fa fa-close" aria-hidden="true"></i></button></td>
   
       </tr>
       
